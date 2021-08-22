@@ -11,6 +11,8 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.util.Collections;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText nome;
@@ -54,17 +56,31 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void SalvarDados(View view){
+        Enum<Sexo> sexo = null;
+        Enum<Estado> uf = null;
+
         String nomeCompleto = nome.getText().toString();
         String tel = telefone.getText().toString();
         String em = email.getText().toString();
-        //listaEmail.isChecked() ? "primeiro" : "segundo"
-        //sexoF.isChecked() ? "primeiro" : "segundo"
-        //sexoF.isChecked() ? "primeiro" : "segundo"
+        if (listaEmail.isChecked()){
+            ListaEmails listaE = new ListaEmails(Collections.singletonList(em));
+        }
+        if(sexoM.isChecked()) {
+           sexo = Sexo.MASCULINO;
+        }
+        else if (sexoF.isChecked()){
+           sexo = Sexo.FEMININO;
+        }
         String cid = cidade.getText().toString();
-        //Estado est = String nomeCompleto = ;
-
-        Formulario form = new Formulario(nomeCompleto, tel, em);
+        //String est = estado.getSelectedItem().toString();
+        //for(Estado e : Estado.values()){
+            //
+            // if(e.equals(est))
+                //uf = e;
+        //}
+        Formulario form = new Formulario(nomeCompleto, tel, em, sexo, cid, uf);
         Toast.makeText(this, form.toString(), Toast.LENGTH_SHORT).show();
+        //LimparCampos(view);
 
     }
 }

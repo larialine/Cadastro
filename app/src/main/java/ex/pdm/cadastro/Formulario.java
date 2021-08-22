@@ -13,12 +13,6 @@ public class Formulario {
 
     }
 
-    public Formulario(String nome, String telefone, String email) {
-        this.nome = nome;
-        this.telefone = telefone;
-        this.email = email;
-    }
-
     public Formulario(String nome, String telefone, String email, Enum<Sexo> sexoEnum, String cidade, Enum<Estado> estadoEnum) {
         this.nome = nome;
         this.telefone = telefone;
